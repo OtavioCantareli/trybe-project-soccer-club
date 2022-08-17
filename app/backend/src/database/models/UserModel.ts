@@ -3,12 +3,21 @@ import db from '.';
 // import OtherModel from './OtherModel';
 
 class User extends Model {
-  // public <campo>!: <tipo>;
+  declare username: string;
+  declare role: string;
+  declare email: string;
+  password: string;
 }
 
 User.init(
   {
     // ... Campos
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
