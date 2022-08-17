@@ -26,11 +26,11 @@ describe("LOGIN", () => {
     username: "username",
   };
 
-  before(async () => {
+  beforeEach(async () => {
     sinon.stub(User, "findOne").resolves(userMock as User);
   });
 
-  after(() => {
+  afterEach(() => {
     (User.findOne as sinon.SinonStub).restore();
   });
 
@@ -46,10 +46,3 @@ describe("LOGIN", () => {
     expect(chaiHttpResponse.body).to.be.an("object").with.key("token");
   });
 });
-function before(arg0: () => Promise<void>) {
-  throw new Error("Function not implemented.");
-}
-
-function after(arg0: () => void) {
-  throw new Error("Function not implemented.");
-}
