@@ -20,10 +20,10 @@ describe("LOGIN", () => {
 
   const userMock: IntUser = {
     id: 1,
-    email: "email@test.com",
-    password: "123456",
+    email: "xablau@xablau.com",
+    password: "xablau",
     role: "user",
-    username: "username",
+    username: "xablau",
   };
 
   beforeEach(async () => {
