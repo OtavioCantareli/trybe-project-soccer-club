@@ -36,13 +36,11 @@ describe("LOGIN", () => {
 
   it("Returns status 200", async () => {
     chaiHttpResponse = await chai.request(app).post("/login");
-
     expect(chaiHttpResponse.status).to.equal(200);
   });
 
   it("Returns token", async () => {
     chaiHttpResponse = await chai.request(app).post("/login");
-
     expect(chaiHttpResponse.body).to.be.an("object").with.key("token");
   });
 });
