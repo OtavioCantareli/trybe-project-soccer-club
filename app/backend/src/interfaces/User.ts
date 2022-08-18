@@ -5,6 +5,6 @@ export interface Index {
 export default interface IntUser extends Index {
   username: string;
   password: string;
-  role: 'user' | 'admin';
+  role: string;
   email: string;
 }
