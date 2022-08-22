@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import MatchService from '../services/MatchService';
+import TeamService from '../services/TeamService';
 
 class MatchController {
   matches = async (request: Request, response: Response) => {
@@ -22,6 +23,14 @@ class MatchController {
       return response.status(401).json({
         message: 'It is not possible to create a match with two equal teams',
       });
+    }
+    const homeTeam = await TeamService.getById(data.homeTeam);
+    const awayTeam = await TeamService.getById(data.awayTeam);
+
+    if (!homeTeam || !awayTeam) {
+      return response
+        .status(404)
+        .json({ message: 'There is no team with such id!' });
     }
     const completeData = { ...data, inProgress: true };
     const match = await MatchService.create(completeData);
