@@ -22,6 +22,13 @@ class MatchController {
     const match = await MatchService.create(completeData);
     return response.status(201).json(match);
   };
+
+  update = async (request: Request, response: Response) => {
+    const { id } = request.params;
+    const finishMatch = false;
+    await MatchService.update(finishMatch, Number(id));
+    return response.status(200).json({ message: 'Finished' });
+  };
 }
 
 export default new MatchController();

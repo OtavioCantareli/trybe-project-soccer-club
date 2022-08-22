@@ -24,6 +24,11 @@ class MatchService {
     const match = await Match.create(data);
     return match;
   };
+
+  update = async (inProgress: boolean, id: number) => {
+    const updatedMatch = await Match.update({ inProgress }, { where: { id } });
+    return updatedMatch;
+  };
 }
 
 export default new MatchService();
