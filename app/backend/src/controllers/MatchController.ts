@@ -18,6 +18,11 @@ class MatchController {
 
   create = async (request: Request, response: Response) => {
     const data = request.body;
+    if (data.homeTeam === data.awayTeam) {
+      return response.status(401).json({
+        message: 'It is not possible to create a match with two equal teams',
+      });
+    }
     const completeData = { ...data, inProgress: true };
     const match = await MatchService.create(completeData);
     return response.status(201).json(match);
