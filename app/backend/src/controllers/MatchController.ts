@@ -2,9 +2,9 @@ import { Request, Response } from 'express';
 import MatchService from '../services/MatchService';
 
 class MatchController {
-  matches = async (req: Request, res: Response) => {
+  matches = async (request: Request, response: Response) => {
     const matches = await MatchService.matches();
-    return res.status(200).json(matches);
+    return response.status(200).json(matches);
   };
 }
 
