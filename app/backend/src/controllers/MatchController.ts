@@ -15,6 +15,13 @@ class MatchController {
     }
     return response.status(200).json(matches);
   };
+
+  create = async (request: Request, response: Response) => {
+    const data = request.body;
+    const completeData = { ...data, inProgress: true };
+    const match = await MatchService.create(completeData);
+    return response.status(201).json(match);
+  };
 }
 
 export default new MatchController();

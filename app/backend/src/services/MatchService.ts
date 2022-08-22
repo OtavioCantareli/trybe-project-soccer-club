@@ -19,6 +19,11 @@ class MatchService {
     });
     return matches;
   };
+
+  create = async (data: Match): Promise<Match> => {
+    const match = await Match.create(data);
+    return match;
+  };
 }
 
 export default new MatchService();
