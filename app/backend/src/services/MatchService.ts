@@ -2,7 +2,7 @@ import Team from '../database/models/TeamModel';
 import Match from '../database/models/MatchesModel';
 
 class MatchService {
-  listMatches = async (): Promise<Match[]> => {
+  matches = async (): Promise<Match[]> => {
     const matches: Match[] = await Match.findAll({
       include: [
         {
