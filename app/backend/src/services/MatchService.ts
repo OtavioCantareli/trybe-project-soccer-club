@@ -29,6 +29,15 @@ class MatchService {
     const updatedMatch = await Match.update({ inProgress }, { where: { id } });
     return updatedMatch;
   };
+
+  update = async (id: number, homeTeamGoals: string, awayTeamGoals: string) => {
+    if (!id) return { code: 401, message: 'There is no matches with such id!' };
+    const updatedMatch = await Match.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
+    return updatedMatch;
+  };
 }
 
 export default new MatchService();

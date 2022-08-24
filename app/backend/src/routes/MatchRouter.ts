@@ -4,6 +4,7 @@ import MatchController from '../controllers/MatchController';
 
 const router = Router();
 
+router.patch('/:id', MatchController.update);
 router.patch('/:id/finish', MatchController.end);
 router.post('/', validToken, MatchController.create);
 router.get('/', MatchController.matches);
