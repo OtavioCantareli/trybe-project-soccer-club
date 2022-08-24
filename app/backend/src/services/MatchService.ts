@@ -25,7 +25,7 @@ class MatchService {
     return match;
   };
 
-  update = async (inProgress: boolean, id: number) => {
+  end = async (inProgress: boolean, id: number) => {
     const updatedMatch = await Match.update({ inProgress }, { where: { id } });
     return updatedMatch;
   };

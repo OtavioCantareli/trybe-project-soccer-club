@@ -37,10 +37,10 @@ class MatchController {
     return response.status(201).json(match);
   };
 
-  update = async (request: Request, response: Response) => {
+  end = async (request: Request, response: Response) => {
     const { id } = request.params;
     const finishMatch = false;
-    await MatchService.update(finishMatch, Number(id));
+    await MatchService.end(finishMatch, Number(id));
     return response.status(200).json({ message: 'Finished' });
   };
 }
