@@ -1,18 +1,16 @@
-import * as sinon from "sinon";
 import * as chai from "chai";
+import * as sinon from "sinon";
 // @ts-ignore
 import chaiHttp = require("chai-http");
-
 import { app } from "../app";
+
 import User from "../database/models/UserModel";
 import IntUser from "../interfaces/User";
 
 import { Response } from "superagent";
 
 chai.use(chaiHttp);
-
 const { expect } = chai;
-
 chai.use(chaiHttp);
 
 describe("LOGIN", () => {
