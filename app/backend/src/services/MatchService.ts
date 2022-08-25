@@ -2,22 +2,25 @@ import Team from '../database/models/TeamModel';
 import Match from '../database/models/MatchesModel';
 
 class MatchService {
-  matches = async (): Promise<Match[]> => {
-    const matches: Match[] = await Match.findAll({
-      include: [
-        {
-          model: Team,
-          as: 'teamHome',
-          attributes: { exclude: ['id'] },
-        },
-        {
-          model: Team,
-          as: 'teamAway',
-          attributes: { exclude: ['id'] },
-        },
+  matches = async (inProgress: string): Promise<Match[]> => {
+    if (!inProgress) {
+      const matches: Match[] = await Match.findAll({
+        include: [
+          { model: Team, as: 'teamHome', attributes: { exclude: ['id'] } },
+          { model: Team, as: 'teamAway', attributes: { exclude: ['id'] },
+          },
+        ],
+      });
+      return matches;
+    }
+    const finished = JSON.parse(inProgress);
+    const filtered = await Match.findAll({
+      where: { inProgress: finished },
+      include: [{ model: Team, as: 'teamHome', attributes: { exclude: ['id'] } },
+        { model: Team, as: 'teamAway', attributes: { exclude: ['id'] } },
       ],
     });
-    return matches;
+    return filtered;
   };
 
   create = async (data: Match): Promise<Match> => {
