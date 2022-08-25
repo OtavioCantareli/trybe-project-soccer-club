@@ -7,12 +7,12 @@ class MatchController {
     const { inProgress } = request.query;
     const matches = await MatchService.matches();
     if (inProgress !== undefined) {
-      if (inProgress) {
-        const inProgressMatches = matches.filter((match) => match.inProgress);
-        return response.status(200).json(inProgressMatches);
+      if (inProgress === 'true') {
+        const ongoing = matches.filter((match) => match.inProgress);
+        return response.status(200).json(ongoing);
       }
-      const finishedMatches = matches.filter((match) => !match.inProgress);
-      return response.status(200).json(finishedMatches);
+      const finished = matches.filter((match) => !match.inProgress);
+      return response.status(200).json(finished);
     }
     return response.status(200).json(matches);
   };
