@@ -79,7 +79,7 @@ describe("LOGIN", () => {
     expect(body.message).to.equal("Incorrect email or password");
   });
 
-  it("Testa se a rota /login retorna status 401 se email incorreto é informado", async () => {
+  it("Returns 401 with wrong email", async () => {
     const response = await chai.request(app).post("/login").send(wrongEmail);
     const body = response.body;
     expect(response.status).to.equal(401);
