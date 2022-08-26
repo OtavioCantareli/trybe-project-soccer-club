@@ -25,7 +25,7 @@ describe("LEADERBOARD", () => {
     goalsFavor: 3,
     goalsOwn: 2,
     goalsBalance: 1,
-    efficiency: "100.00",
+    efficiency: 100.00,
   };
 
   const teamMock: IntTeam = {
