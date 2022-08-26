@@ -8,5 +8,5 @@ export default interface IntLeaderboard {
   goalsFavor: number;
   goalsOwn: number;
   goalsBalance: number;
-  efficiency: string;
+  efficiency: number;
 }
